@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Cricket Score</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <h1>Live Cricket Score</h1>
+
+    <div class="match-controls">
+        <label for="matchIdInput">Enter Match ID:</label>
+        <input type="number" id="matchIdInput" value="677">
+        <button onclick="updateMatchIdAndLoad()">Load Match</button>
+    </div>
+
+    <!-- Loading/Error Indicator -->
+    <div id="loading" class="status-message">Loading match details...</div>
+    <div id="error-message" class="status-message error-message" style="display: none;"></div>
+
+    <!-- Scoreboard Summary -->
+    <div id="scoreboard" class="scoreboard-container" style="display: none;">
+        <div class="team-score batting-team">
+            <span id="battingTeamName" class="team-name"></span>
+            <span id="currentScore" class="score"></span>
+            <span id="currentOvers" class="overs"></span>
+        </div>
+        <div class="vs">vs</div>
+        <div class="team-score bowling-team">
+            <span id="bowlingTeamName" class="team-name"></span>
+            <!-- You might add previous innings score here if available -->
+        </div>
+    </div>
+
+    <!-- Batsmen Details -->
+    <div id="batsmen-info" class="info-section" style="display: none;">
+        <h2>Batting</h2>
+        <table id="batsmenTable">
+            <thead>
+                <tr>
+                    <th>Batter</th>
+                    <th>R</th>
+                    <th>B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Batsmen rows will be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bowler Details -->
+    <div id="bowler-info" class="info-section" style="display: none;">
+        <h2>Bowling</h2>
+        <table id="bowlerTable">
+            <thead>
+                <tr>
+                    <th>Bowler</th>
+                    <th>O</th>
+                    <th>M</th>
+                    <th>R</th>
+                    <th>W</th>
+                    <th>Econ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Bowler row will be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Ball-by-Ball Commentary -->
+    <div id="ballByBallContainer" class="info-section" style="display: none;">
+        <h2>Ball-by-Ball</h2>
+        <div id="commentary-feed">
+            <!-- Commentary items will be added here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initial load when the page loads
+        document.addEventListener('DOMContentLoaded', loadMatchData);
+
+        // Function to update MATCH_ID and reload data
+        function updateMatchIdAndLoad() {
+            const newMatchId = document.getElementById('matchIdInput').value;
+            if (newMatchId && !isNaN(newMatchId)) {
+                MATCH_ID = parseInt(newMatchId, 10);
+                // Clear previous data and show loading indicators
+                clearUI();
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('loading').textContent = 'Loading new match details...';
+                document.getElementById('error-message').style.display = 'none';
+                loadMatchData();
+            } else {
+                alert("Please enter a valid Match ID.");
+            }
+        }
+
+        // Function to clear UI elements before loading new data
+        function clearUI() {
+            document.getElementById('scoreboard').style.display = 'none';
+            document.getElementById('batsmen-info').style.display = 'none';
+            document.getElementById('bowler-info').style.display = 'none';
+            document.getElementById('ballByBallContainer').style.display = 'none';
+            document.getElementById('commentary-feed').innerHTML = '';
+            document.getElementById('batsmenTable').querySelector('tbody').innerHTML = '';
+            document.getElementById('bowlerTable').querySelector('tbody').innerHTML = '';
+            document.getElementById('error-message').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

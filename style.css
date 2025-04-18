@@ -1,0 +1,208 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #0056b3; /* Dark blue */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.match-controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+.match-controls label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.match-controls input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.match-controls button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.match-controls button:hover {
+    background-color: #0056b3;
+}
+
+
+.status-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.loading {
+    background-color: #d1ecf1; /* Light blue */
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.error-message {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+.scoreboard-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #343a40; /* Dark background */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.team-score {
+    text-align: center;
+}
+
+.team-name {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.score {
+    font-size: 1.8em;
+    font-weight: bold;
+    display: block; /* Ensure it takes its own line */
+    margin-bottom: 5px;
+}
+
+.overs {
+    font-size: 0.9em;
+    color: #adb5bd; /* Lighter grey */
+}
+
+.vs {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffc107; /* Yellow */
+}
+
+.info-section {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #e9ecef; /* Light grey */
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Highlight striker */
+.striker td:first-child::after {
+    content: ' *';
+    color: #dc3545; /* Red */
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+#commentary-feed {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+.commentary-item {
+    display: flex;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.commentary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.commentary-ball {
+    flex: 0 0 50px; /* Fixed width for ball number */
+    font-weight: bold;
+    background-color: #6c757d; /* Grey */
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 10px;
+    height: fit-content; /* Adjust height */
+}
+
+.commentary-details {
+    flex: 1;
+}
+
+.commentary-runs {
+    font-weight: bold;
+    margin-right: 8px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block; /* Make it inline */
+    min-width: 20px; /* Ensure minimum width */
+    text-align: center;
+}
+
+/* Style runs differently */
+.runs-0 { background-color: #adb5bd; color: white; } /* Dot ball */
+.runs-1, .runs-2, .runs-3 { background-color: #cfe2ff; color: #0a3678; } /* Singles/Doubles */
+.runs-4 { background-color: #0d6efd; color: white; } /* Four */
+.runs-6 { background-color: #198754; color: white; } /* Six */
+.runs-W { background-color: #dc3545; color: white; } /* Wicket */
+.runs-wd, .runs-nb { background-color: #ffc107; color: #333; } /* Wide/NoBall */
+
+
+.commentary-text {
+    display: inline; /* Keep text on the same line as runs */
+}
+
+/* Style specific events in commentary if needed */
+.commentary-text b { /* Like 'FOUR', 'SIX', 'OUT' */
+    color: #0056b3;
+}
